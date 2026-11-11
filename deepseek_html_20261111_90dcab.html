@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nhóm 2 — Bộ thủ cơ thể</title>
+<style>
+:root{
+  --paper:#faf6ef; --ink:#2b2620; --muted:#8a7d6c;
+  --line:#e8dcc8; --accent:#b8560e; --accent-soft:#f6e6d2;
+  --cjk:"Noto Serif CJK SC","Songti SC","PingFang SC","Microsoft YaHei",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+     background:var(--paper);color:var(--ink);line-height:1.5}
+main{max-width:600px;margin:0 auto;padding:24px 18px 56px}
+h1{font-size:.9rem;font-weight:600;margin:0 0 4px;text-align:center;
+   color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+h1 + p{text-align:center;font-size:.8rem;color:var(--muted);margin:0 0 16px}
+
+.stage{background:#fff;border-radius:26px;padding:10px;
+       border:1.5px solid var(--line);overflow:hidden;
+       box-shadow:0 8px 32px rgba(184,86,14,.06)}
+svg#fig{width:100%;height:auto;display:block}
+
+.hotspot{cursor:pointer;outline:none;
+  transform-box:fill-box;transform-origin:center;
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.hotspot:hover{transform:scale(1.14)}
+.hotspot circle{
+  fill:url(#spot);stroke:var(--accent);stroke-width:1.8;
+  filter:drop-shadow(0 2px 4px rgba(184,86,14,.22));
+  transition:fill .2s,stroke-width .2s;
+}
+.hotspot .glyph{
+  font-family:var(--cjk);font-size:20px;fill:var(--ink);
+  text-anchor:middle;dominant-baseline:central;
+  pointer-events:none;transition:fill .2s;
+}
+.hotspot.sel{transform:scale(1.14)}
+.hotspot.sel circle{fill:var(--accent);stroke:#8a3f0a;stroke-width:2.5}
+.hotspot.sel .glyph{fill:#fff}
+.hotspot:focus-visible circle{stroke-width:4}
+
+.card{background:#fff;border-radius:26px;border:1.5px solid var(--line);
+      padding:28px 20px 26px;margin-top:14px;text-align:center;min-height:280px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      box-shadow:0 8px 32px rgba(184,86,14,.06)}
+.card .icon{font-size:76px;line-height:1;margin-bottom:12px;
+             filter:drop-shadow(0 4px 10px rgba(0,0,0,.12))}
+.card .glyph{font-family:var(--cjk);font-size:62px;line-height:1;
+             color:var(--accent);margin-bottom:4px}
+.card .variant{font-family:var(--cjk);font-size:.95rem;color:var(--muted);
+               margin-bottom:6px}
+.card .pron{font-size:1.3rem;margin:0 0 2px;letter-spacing:.02em}
+.card .pron .hv{color:var(--muted);margin-left:8px;font-size:1rem;letter-spacing:0}
+.card .meaning{font-size:1.3rem;font-weight:600;margin:0 0 20px;
+               color:var(--accent)}
+.card .examples{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+.card .ex{display:flex;flex-direction:column;align-items:center;gap:1px;
+          padding:8px 12px;border-radius:12px;background:#fdfaf5;
+          border:1px solid var(--line);min-width:60px}
+.card .ex .c{font-family:var(--cjk);font-size:28px;line-height:1.15}
+.card .ex .hv{font-size:.7rem;color:var(--muted)}
+.card .ex .m{font-size:.78rem}
+.card .hint{color:var(--muted);font-size:1.1rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Nhóm 2 — Bộ thủ cơ thể</h1>
+  <p>Chạm vào một bộ phận trên hình</p>
+
+  <section class="stage">
+    <svg id="fig" viewBox="0 0 420 640" role="img" aria-label="Sơ đồ cơ thể người">
+      <defs>
+        <radialGradient id="skin" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#ffe1c6"/>
+          <stop offset="100%" stop-color="#e4a87d"/>
+        </radialGradient>
+        <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#83c6ac"/>
+          <stop offset="100%" stop-color="#4f8d74"/>
+        </linearGradient>
+        <linearGradient id="pants" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#61728a"/>
+          <stop offset="100%" stop-color="#3e4d5e"/>
+        </linearGradient>
+        <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a3a2e"/>
+          <stop offset="100%" stop-color="#2a1f18"/>
+        </linearGradient>
+        <radialGradient id="spot" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#fff"/>
+          <stop offset="100%" stop-color="#f8e8d4"/>
+        </radialGradient>
+        <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4"/>
+        </filter>
+      </defs>
+
+      <ellipse cx="210" cy="618" rx="130" ry="10"
+               fill="#b8560e" opacity="0.08" filter="url(#blur)"/>
+
+      <!-- chân -->
+      <path d="M182 342 Q176 460 174 578"
+            stroke="url(#pants)" stroke-width="38" stroke-linecap="round" fill="none"/>
+      <path d="M238 342 Q244 460 246 578"
+            stroke="url(#pants)" stroke-width="38" stroke-linecap="round" fill="none"/>
+      <ellipse cx="170" cy="588" rx="30" ry="13" fill="#3e4d5e"/>
+      <ellipse cx="250" cy="588" rx="30" ry="13" fill="#3e4d5e"/>
+
+      <!-- thân -->
+      <path d="M158 178 Q152 162 176 154 L244 154 Q268 162 262 178
+               L258 344 Q210 358 162 344 Z" fill="url(#shirt)"/>
+
+      <!-- tay + bắp tay -->
+      <path d="M162 184 Q140 260 122 372"
+            stroke="url(#shirt)" stroke-width="30" stroke-linecap="round" fill="none"/>
+      <path d="M258 184 Q280 260 298 372"
+            stroke="url(#shirt)" stroke-width="30" stroke-linecap="round" fill="none"/>
+      <circle cx="118" cy="380" r="17" fill="url(#skin)"/>
+      <circle cx="302" cy="380" r="17" fill="url(#skin)"/>
+      <!-- bắp tay phải -->
+      <ellipse cx="272" cy="208" rx="14" ry="10" fill="url(#skin)" opacity="0.9"/>
+
+      <!-- cổ -->
+      <rect x="194" y="132" width="32" height="30" rx="10" fill="url(#skin)"/>
+
+      <!-- đầu -->
+      <ellipse cx="210" cy="96" rx="48" ry="52" fill="url(#skin)"/>
+      <path d="M162 98 Q158 44 210 44 Q262 44 258 98 Q254 70 210 66 Q166 70 162 98 Z"
+            fill="url(#hair)"/>
+
+      <!-- tai trái / tai phải -->
+      <ellipse cx="163" cy="104" rx="6"  ry="10" fill="url(#skin)"/>
+      <ellipse cx="257" cy="104" rx="6"  ry="10" fill="url(#skin)"/>
+
+      <!-- mắt -->
+      <circle cx="192" cy="96" r="3.5" fill="#2a1f18"/>
+      <circle cx="228" cy="96" r="3.5" fill="#2a1f18"/>
+
+      <!-- miệng -->
+      <path d="M198 118 Q210 126 222 118"
+            stroke="#a5664a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+      <g id="hotspots"></g>
+    </svg>
+  </section>
+
+  <section class="card" id="card"></section>
+</main>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+
+/* ==== 8 bộ thủ cơ thể (giản thể) ==== */
+const RADICALS = {
+  khau: {glyph:"口", variant:"",   pinyin:"kǒu", hv:"khẩu", meaning:"miệng",        icon:"👄",
+         ex:[{c:"吃",hv:"ngật",m:"ăn"},{c:"喝",hv:"hát",m:"uống"},{c:"说",hv:"thuyết",m:"nói"}]},
+  mu:   {glyph:"目", variant:"",   pinyin:"mù",  hv:"mục",  meaning:"mắt",          icon:"👁️",
+         ex:[{c:"眼",hv:"nhãn",m:"mắt"},{c:"看",hv:"khán",m:"nhìn"},{c:"睡",hv:"thụy",m:"ngủ"}]},
+  nhĩ:  {glyph:"耳", variant:"",   pinyin:"ěr",  hv:"nhĩ",  meaning:"tai",          icon:"👂",
+         ex:[{c:"闻",hv:"văn",m:"nghe"},{c:"聪",hv:"thông",m:"thông minh"},{c:"聊",hv:"liêu",m:"tán gẫu"}]},
+  tam:  {glyph:"心", variant:"忄", pinyin:"xīn", hv:"tâm",  meaning:"tim, cảm xúc", icon:"❤️",
+         ex:[{c:"想",hv:"tưởng",m:"nghĩ"},{c:"忙",hv:"mang",m:"bận"},{c:"情",hv:"tình",m:"tình cảm"}]},
+  tuc:  {glyph:"足", variant:"⻊", pinyin:"zú",  hv:"túc",  meaning:"chân",         icon:"🦶",
+         ex:[{c:"跑",hv:"bào",m:"chạy"},{c:"跳",hv:"khiêu",m:"nhảy"},{c:"路",hv:"lộ",m:"đường"}]},
+  hiet: {glyph:"页", variant:"",   pinyin:"yè",  hv:"hiệt", meaning:"đầu",          icon:"🧑",
+         ex:[{c:"顶",hv:"đỉnh",m:"đỉnh đầu"},{c:"题",hv:"đề",m:"đề bài"},{c:"顾",hv:"cố",m:"ngoảnh"}]},
+  nhuc: {glyph:"肉", variant:"月", pinyin:"ròu", hv:"nhục", meaning:"thịt, cơ thể", icon:"💪",
+         ex:[{c:"脑",hv:"não",m:"não"},{c:"脸",hv:"kiểm",m:"mặt"},{c:"腿",hv:"thối",m:"đùi"}]},
+  thu:  {glyph:"手", variant:"扌", pinyin:"shǒu",hv:"thủ",  meaning:"tay",          icon:"✋",
+         ex:[{c:"打",hv:"đả",m:"đánh"},{c:"推",hv:"thôi",m:"đẩy"},{c:"拿",hv:"nã",m:"cầm"}]}
+};
+
+/* ==== vị trí hotspot ==== */
+const SPOTS = [
+  {id:"khau", x:210, y:126, r:14},   /* miệng */
+  {id:"mu",   x:192, y:96,  r:15},   /* mắt trái */
+  {id:"nhĩ",  x:257, y:106, r:13},   /* tai phải */
+  {id:"tam",  x:210, y:235, r:18},   /* ngực (tim) */
+  {id:"tuc",  x:170, y:588, r:17},   /* bàn chân trái */
+  {id:"hiet", x:210, y:56,  r:15},   /* đỉnh đầu */
+  {id:"nhuc", x:272, y:208, r:15},   /* bắp tay phải */
+  {id:"thu",  x:118, y:380, r:18},   /* bàn tay trái */
+  {id:"thu",  x:302, y:380, r:18}    /* bàn tay phải */
+];
+
+const panel    = document.getElementById("card");
+const svgSpots = document.getElementById("hotspots");
+
+SPOTS.forEach(s => {
+  const r = RADICALS[s.id];
+  const g = document.createElementNS(NS,"g");
+  g.setAttribute("class","hotspot");
+  g.setAttribute("tabindex","0");
+  g.setAttribute("role","button");
+  g.setAttribute("aria-label", r.pinyin + " " + r.hv);
+  g.dataset.id = s.id;
+
+  const c = document.createElementNS(NS,"circle");
+  c.setAttribute("cx",s.x); c.setAttribute("cy",s.y); c.setAttribute("r",s.r);
+
+  const t = document.createElementNS(NS,"text");
+  t.setAttribute("class","glyph");
+  t.setAttribute("x",s.x); t.setAttribute("y",s.y);
+  t.textContent = r.glyph;
+
+  g.append(c,t);
+  g.addEventListener("click", () => select(s.id));
+  g.addEventListener("keydown", e => {
+    if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(s.id); }
+  });
+  svgSpots.appendChild(g);
+});
+
+function select(id){
+  document.querySelectorAll(".hotspot").forEach(el =>
+    el.classList.toggle("sel", el.dataset.id === id));
+  renderCard(id);
+}
+
+function renderCard(id){
+  const r = RADICALS[id];
+  panel.innerHTML = `
+    <div class="icon">${r.icon}</div>
+    <div class="glyph">${r.glyph}</div>
+    ${r.variant ? `<div class="variant">biến thể: ${r.variant}</div>` : ""}
+    <p class="pron">${r.pinyin}<span class="hv">· ${r.hv}</span></p>
+    <p class="meaning">${r.meaning}</p>
+    <div class="examples">
+      ${r.ex.map(x => `
+        <div class="ex">
+          <span class="c">${x.c}</span>
+          <span class="hv">${x.hv}</span>
+          <span class="m">${x.m}</span>
+        </div>`).join("")}
+    </div>`;
+}
+
+panel.innerHTML = `<p class="hint">👆 Chạm vào một bộ phận</p>`;
+</script>
+</body>
+</html>
